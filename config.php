@@ -1,6 +1,6 @@
 <?php
 // AWS RDS MySQL bağlantı ayarları
-define('DB_HOST', 'phpblog.cjq46ywe28x8.us-east-1.rds.amazonaws.com');
+define('DB_HOST', 'MYSQL_URL');
 define('DB_USER', 'admin');
 define('DB_PASS', '');
 define('DB_NAME', 'blogdb');
