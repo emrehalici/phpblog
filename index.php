@@ -3,7 +3,7 @@ include 'config.php';
 include 'templates/header.php';
 
 // Blog başlığı
-echo "<header><h1>Emre Halıcı Blog Sayfası</h1></header>";
+echo "<h1>Emre Halıcı Blog Sayfası</h1>";
 
 // Yeni yazı ekleme bağlantısı
 echo "<h2><a href='new_post.php'>Yeni Yazı Ekle</a></h2>";
