@@ -1,0 +1,32 @@
+name: Deploy Index php
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH Key
+        run: |
+          echo "${{ secrets.DEPLOY_KEY }}" > deploy_key
+          chmod 400 deploy_key
+          ls -l
+
+      - name: Check SSH Key
+        run: |
+          cat deploy_key
+          echo "SSH key loaded successfully."
+
+      - name: Copy index.html to server
+        env:
+          SERVER_IP: ${{ secrets.SERVER_IP }}  # Sunucu IP adresi
+          USERNAME: ${{ secrets.USERNAME }}  # SSH kullanıcı adı
+        run: |
+          echo "Deploying index.php to server..."
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no -i deploy_key" index.php $USERNAME@$SERVER_IP:/app/phpblog/
